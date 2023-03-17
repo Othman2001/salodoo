@@ -1,12 +1,53 @@
 import {  Button, Input, Spacer, Text } from "@nextui-org/react"
 import * as Styles from "./AddShipmentForm.styles"
+import { useAddShipmentMutation } from "../../hooks/shipment/useAddShipmentMutation";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AddShipmentForm(){ 
+  const [name , setName] = useState<string | null>(null);
+  const [pickupAddress , setPickupAddress] = useState<string | null>(null);
+  const [dropOffAddress , setDropOffAddress] = useState<string | null>(null);
+  const { mutate , error , isError , isSuccess} = useAddShipmentMutation();
+  const navigate = useNavigate();
+
+  const handleSubmit =  (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if(pickupAddress && dropOffAddress && name) {       
+      mutate({
+         name,
+         pickupAddress,
+         dropOffAddress
+     });
+    }
+    if(!isError){
+      setName("");
+      setPickupAddress("");
+      setDropOffAddress("");
+      navigate("/shipments")
+    }
+
+  }
+
+  useEffect(()=>{
+      console.log(pickupAddress, "pickupAddress")
+  },[pickupAddress])
      return(
+      <form onSubmit={handleSubmit}>
       <Styles.Contaienr>
+        {
+          isError && (
+            <Text h4 color="red">
+              error
+            </Text>
+          )
+        }
+
         <Text h3> Add Shipment Detailes</Text>
         <Spacer />
         <Input 
+        value={name as string}
+        onChange={(e)=>setName(e.target.value)}
          width="30%"
           clearable
           label="shipment name"
@@ -15,6 +56,8 @@ export default function AddShipmentForm(){
            size="md" required placeholder="shipment name" />
           <Spacer x = {2}/>
         <Input 
+        value = {pickupAddress as string}
+        onChange={(e)=>setPickupAddress(e.target.value)}
          width="30%"
           clearable
           label="pickup address"
@@ -23,16 +66,23 @@ export default function AddShipmentForm(){
            size="md" required placeholder="PickUpAddress" />
           <Spacer x = {2}/>
            <Input 
-        width="30%"
+           value = {dropOffAddress as string}
+           onChange={(e)=>setDropOffAddress(e.target.value)}
+          width="30%"
           label="dropoff address"
           clearable
             rounded = {false} 
             type="text" 
            size="md" required placeholder="drop off address" />
         <Spacer y={2} />
-        <Button>
+        <Button
+        
+        type="submit"
+        >
           Add Shipment
         </Button>
       </Styles.Contaienr>
+      </form>
+
      )
 }

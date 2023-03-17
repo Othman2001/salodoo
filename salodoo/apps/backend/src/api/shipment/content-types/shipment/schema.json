@@ -4,7 +4,7 @@
   "info": {
     "singularName": "shipment",
     "pluralName": "shipments",
-    "displayName": "Parcels",
+    "displayName": "shipment",
     "description": ""
   },
   "options": {
@@ -13,10 +13,12 @@
   "pluginOptions": {},
   "attributes": {
     "pickUpAddress": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "dropOffAddress": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "reserved": {
       "type": "boolean"
@@ -27,7 +29,17 @@
         "published ",
         "connectedToBiker",
         "delivered"
-      ]
+      ],
+      "default": "published "
+    },
+    "name": {
+      "type": "string"
+    },
+    "shipper": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::shipper.shipper",
+      "inversedBy": "shipment"
     }
   }
 }

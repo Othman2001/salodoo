@@ -8,6 +8,7 @@ interface ILayoutProps {
 
 export default function Layout ({children}:ILayoutProps) {
     return(
+        
         <NextUIProvider theme = {theme}>
         <NavbarComponent/>
         <main>
