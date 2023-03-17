@@ -1,16 +1,12 @@
-import styled from 'styled-components';
-
-import NxWelcome from './nx-welcome';
-
-const StyledApp = styled.div`
-  // Your style here
-`;
+import {NavbarComponent} from "@sharedUi"
+import Header from './components/header/Header';
+import Layout from "./shared/Layout";
 
 export function App() {
   return (
-    <StyledApp>
-      <NxWelcome title="shipper-portal" />
-    </StyledApp>
+    <Layout>
+    <Header/>
+    </Layout>
   );
 }
 
