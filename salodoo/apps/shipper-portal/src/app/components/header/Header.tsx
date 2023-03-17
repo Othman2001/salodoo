@@ -1,7 +1,13 @@
 import { Button, Spacer, Text } from "@nextui-org/react";
 import * as Styles from "./header.styles"
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+    const navigate = useNavigate();
+    const navigateToAddShipmentPage= ()=>{
+        console.log("navigated")
+        navigate("/add-shipment");
+    }
     return( 
         <header>
             <Styles.HeaderContainer>
@@ -13,7 +19,7 @@ export default function Header() {
                 You Haven't added any shipmments yet
             </Text>
             <Spacer />
-            <Button  size="lg"> 
+            <Button  onClick={navigateToAddShipmentPage} size="lg"> 
                 Add Shipment
             </Button>
             </Styles.HeaderContainer>
