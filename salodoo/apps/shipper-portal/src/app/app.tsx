@@ -1,14 +1,11 @@
-import Header from './components/header/Header';
 import AddShipment from './pages/AddShipment';
 import HomePage from './pages/HomePage';
-import Layout from "./shared/Layout";
-import {Route, BrowserRouter , Routes } from "react-router-dom";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-
-import Test from './components/Test';
 import { NavbarComponent } from '@sharedUi';
 import { NextUIProvider, theme } from '@nextui-org/react';
+import Shipments from './pages/Shipments';
 
 export function App() {
   const client = new QueryClient({
@@ -19,19 +16,20 @@ export function App() {
     },
   });
   return (
-      <QueryClientProvider client={client}>
-        <NextUIProvider theme={theme}>
-        <NavbarComponent />      
+    <QueryClientProvider client={client}>
+      <NextUIProvider theme={theme}>
+        <NavbarComponent />
         <BrowserRouter>
-        <Routes>
-          <Route  path="/" element={<HomePage />} />
-          <Route path="/add-shipment" element={<AddShipment />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/add-shipment" element={<AddShipment />} />
+            <Route path='/shipments' element={<Shipments />} />
+          </Routes>
         </BrowserRouter>
         <ReactQueryDevtools />
-        </NextUIProvider>
-      </QueryClientProvider>
-        
+      </NextUIProvider>
+    </QueryClientProvider>
+
   );
 }
 

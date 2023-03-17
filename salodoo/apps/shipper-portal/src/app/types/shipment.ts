@@ -1,17 +1,20 @@
-export type Shipper = { 
-    name:string;
-    email:string;
+export type Shipper = {
+  name: string;
+  email: string;
+};
+export enum Status {
+  published = "published",
+  connectedToBiker = "ConnectedToBiker",
+  delivered = "delivered",
 }
-enum Status {
-    Pending,
-    ConnectedToBiker,
-    Delivered,
-  }
 export type Shipment = {
-    pickUpAddress:string;
-    dropOffAddress:string;
-    name:string;
-    id:string;
-    shipper:Shipper
-    status: Status
-}
+  attributes: {
+    pickUpAddress: string;
+    dropOffAddress: string;
+    name: string;
+    id: string;
+    shipper: Shipper;
+    status: Status;
+  };
+  id: number;
+};
