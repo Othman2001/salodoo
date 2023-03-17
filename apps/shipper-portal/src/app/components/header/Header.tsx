@@ -5,9 +5,9 @@ import useGetShipments from "../../hooks/shipment/useGetShipments";
 
 export default function Header() {
   const navigate = useNavigate();
-  const navigateToAddShipmentPage = () => {
-    console.log("navigated")
-    navigate("/add-shipment");
+
+  const navigateToPage = (page: string) => {
+    navigate(page)
   }
   const { data } = useGetShipments();
   return (
@@ -17,8 +17,12 @@ export default function Header() {
       {data && data.length > 0 ? (
         <Styles.FlexContainer>
 
-          <Button flat size="md"  >Your Shipments </Button>
-          <Button size="md"> Add Your Shipments</Button>
+          <Button onClick={() => {
+            navigateToPage("/shipments")
+          }} flat size="md"  >Your Shipments </Button>
+          <Button onClick={() => {
+            navigate("/shipments")
+          }} size="md"> Add Your Shipments</Button>
 
         </Styles.FlexContainer>
       ) : (
@@ -27,7 +31,9 @@ export default function Header() {
             You Haven't added any shipmments yet
           </Text>
           <Spacer />
-          <Button onClick={navigateToAddShipmentPage} size="lg">
+          <Button onClick={() => {
+            navigateToPage("/add-shipment")
+          }} size="lg">
             Add Shipment
           </Button>
         </>

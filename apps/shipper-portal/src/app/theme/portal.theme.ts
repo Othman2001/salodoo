@@ -1,12 +1,13 @@
-import { createTheme } from "@nextui-org/react"
+import { createTheme } from "@nextui-org/react";
 
 const theme = createTheme({
-    type:"light",
-    theme:{
-        colors:{
-            primary:"#349AEC"
-        }
-    }
-})
+  type: "dark",
+  theme: {
+    colors: {
+      background: "#141414",
+      primary: "#FF6813",
+    },
+  },
+});
 
-export default theme
+export default theme;
