@@ -11,7 +11,7 @@
           "test",
           "e2e"
         ],
-        "accessToken": "MmI2OGVjODgtMzZhMC00MWE2LWJiYmYtNGQ4ZDc1N2NjNWUyfHJlYWQtd3JpdGU="
+        "accessToken": "MWYyODVkODEtMGIyYi00ZTYyLWFiNTYtZTdjNGIzZTgxZjRjfHJlYWQtd3JpdGU="
       }
     }
   },
@@ -35,9 +35,5 @@
       "default"
     ],
     "sharedGlobals": []
-  },
-  "workspaceLayout": {
-    "appsDir": "packages",
-    "libsDir": "packages"
   }
 }
