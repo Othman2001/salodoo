@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "shipments",
+  "info": {
+    "singularName": "shipment",
+    "pluralName": "shipments",
+    "displayName": "Parcels",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pickUpAddress": {
+      "type": "text"
+    },
+    "dropOffAddress": {
+      "type": "string"
+    },
+    "reserved": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "published ",
+        "connectedToBiker",
+        "delivered"
+      ]
+    }
+  }
+}

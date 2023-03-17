@@ -1,0 +1,72 @@
+{
+  "name": "salodoo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/salodoo/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/salodoo"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "salodoo:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "salodoo:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "salodoo:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nrwl/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "salodoo:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "salodoo:build:development"
+        },
+        "production": {
+          "buildTarget": "salodoo:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/apps/salodoo"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/apps/salodoo"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/salodoo/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "shippers",
+  "info": {
+    "singularName": "shipper",
+    "pluralName": "shippers",
+    "displayName": "shipper",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "admin_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "admin::user"
+    }
+  }
+}
