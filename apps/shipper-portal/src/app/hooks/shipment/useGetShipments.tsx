@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import client from "../../helpers/client";
 import { Shipment } from "../../types/shipment";
 
-const useGetShipments = () => {
+export const useGetShipments = () => {
   const fetchShipments = async (): Promise<Shipment[]> => {
     const res = client.get("/api/shipments")
     return (await res).data.data

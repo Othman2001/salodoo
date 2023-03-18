@@ -1,4 +1,4 @@
-import ShipmentTable from "../containers/shipmentTable/ShipmentsTable.Contaienr";
+import ShipmentTable from "../components/shipmentsTable/ShipmentTable.Container";
 
 export default function Shipments() {
   return (

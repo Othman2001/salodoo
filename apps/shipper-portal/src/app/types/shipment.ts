@@ -13,7 +13,7 @@ export type Shipment = {
     dropOffAddress: string;
     name: string;
     id: string;
-    shipper: Shipper;
+    shipper: { id: number };
     status: Status;
   };
   id: number;

@@ -1,7 +1,7 @@
-import Header from "../containers/header/Header.Container";
+import Header from "../components/header/Header.Container";
 
-export default function HomePage() { 
-    return(
-        <Header/>
-    )
+export default function HomePage() {
+  return (
+    <Header />
+  )
 }
