@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/salodoo"
@@ -54,7 +56,9 @@
     },
     "test": {
       "executor": "@nrwl/vite:test",
-      "outputs": ["coverage/apps/salodoo"],
+      "outputs": [
+        "coverage/apps/salodoo"
+      ],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/apps/salodoo"
@@ -62,9 +66,22 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/salodoo/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "apps/salodoo/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "component-test": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/salodoo/cypress.config.ts",
+        "testingType": "component",
+        "devServerTarget": "salodoo:build",
+        "skipServe": true
       }
     }
   },

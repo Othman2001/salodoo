@@ -21,8 +21,8 @@ export default function Header() {
             navigateToPage("/shipments")
           }} flat size="md"  >Your Shipments </Button>
           <Button onClick={() => {
-            navigate("/shipments")
-          }} size="md"> Add Your Shipments</Button>
+            navigate("/add-shipment")
+          }} size="md"> Add  Shipment</Button>
 
         </Styles.FlexContainer>
       ) : (

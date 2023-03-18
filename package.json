@@ -50,6 +50,7 @@
   "dependencies": {
     "@nextui-org/react": "^1.0.0-beta.12",
     "@tanstack/react-query-devtools": "^4.26.1",
+    "@testing-library/user-event": "^14.4.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-form-stepper": "^2.0.3",
