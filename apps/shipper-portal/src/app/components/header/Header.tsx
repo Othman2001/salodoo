@@ -20,7 +20,6 @@ export default function Header({ shipments }: IHeaderProps) {
       <br />
       {shipments && shipments.length > 0 ? (
         <Styles.FlexContainer>
-
           <Button onClick={() => {
             navigateToPage("/shipments")
           }} flat size="md"  >

@@ -1,39 +1,36 @@
-import styled from 'styled-components';
-
-import NxWelcome from './nx-welcome';
-
-const StyledApp = styled.div`
-  // Your style here
-`;
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { NextUIProvider, } from '@nextui-org/react';
+import theme from "./theme/biker.theme";
+import HomePage from "./pages/HomePage";
+import Shipments from "./pages/Shipments";
+import ShipmentsCarsContainer from "./components/shipments/ShipmentsCardContainer";
 
 export function App() {
+  const client = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: true,
+      },
+    },
+  });
   return (
-    <StyledApp>
-      <NxWelcome title="biker-portal" />
-    </StyledApp>
+    <QueryClientProvider client={client}>
+      <NextUIProvider theme={theme}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/my-shipments" element={<Shipments />} />
+            <Route path="/browser-shipments" element={<ShipmentsCarsContainer />} />
+
+          </Routes>
+        </BrowserRouter>
+        <ReactQueryDevtools />
+      </NextUIProvider>
+    </QueryClientProvider>
+
   );
 }
 
 export default App;
-
-if (import.meta.vitest) {
-  // add tests related to your file here
-  // For more information please visit the Vitest docs site here: https://vitest.dev/guide/in-source.html
-
-  const { it, expect, beforeEach } = import.meta.vitest;
-  let render: any;
-
-  beforeEach(async () => {
-    render = (await import('@testing-library/react')).render;
-  });
-
-  it('should render successfully', () => {
-    const { baseElement } = render(<App />);
-    expect(baseElement).toBeTruthy();
-  });
-
-  it('should have a greeting as the title', () => {
-    const { getByText } = render(<App />);
-    expect(getByText(/Welcome biker-portal/gi)).toBeTruthy();
-  });
-}
